@@ -1,0 +1,108 @@
+{
+  "@@locale": "it",
+  
+  "appName": "CloudBarber",
+  "@appName": {
+    "description": "Il nome dell'applicazione"
+  },
+  
+  "welcome": "Benvenuto",
+  "@welcome": {
+    "description": "Messaggio di benvenuto"
+  },
+  
+  "login": "Accedi",
+  "@login": {
+    "description": "Testo del pulsante di accesso"
+  },
+  
+  "register": "Registrati",
+  "@register": {
+    "description": "Testo del pulsante di registrazione"
+  },
+  
+  "email": "Email",
+  "@email": {
+    "description": "Etichetta del campo email"
+  },
+  
+  "password": "Password",
+  "@password": {
+    "description": "Etichetta del campo password"
+  },
+  
+  "forgotPassword": "Password dimenticata?",
+  "@forgotPassword": {
+    "description": "Testo del link password dimenticata"
+  },
+  
+  "dontHaveAccount": "Non hai un account?",
+  "@dontHaveAccount": {
+    "description": "Testo del prompt di registrazione"
+  },
+  
+  "alreadyHaveAccount": "Hai già un account?",
+  "@alreadyHaveAccount": {
+    "description": "Testo del prompt di accesso"
+  },
+  
+  "bookings": "Prenotazioni",
+  "@bookings": {
+    "description": "Titolo della pagina delle prenotazioni"
+  },
+  
+  "myBookings": "Le mie prenotazioni",
+  "@myBookings": {
+    "description": "Titolo della sezione delle mie prenotazioni"
+  },
+  
+  "newBooking": "Nuova prenotazione",
+  "@newBooking": {
+    "description": "Testo del pulsante nuova prenotazione"
+  },
+  
+  "profile": "Profilo",
+  "@profile": {
+    "description": "Titolo della pagina del profilo"
+  },
+  
+  "settings": "Impostazioni",
+  "@settings": {
+    "description": "Titolo della pagina delle impostazioni"
+  },
+  
+  "logout": "Esci",
+  "@logout": {
+    "description": "Testo del pulsante di uscita"
+  },
+  
+  "cancel": "Annulla",
+  "@cancel": {
+    "description": "Testo del pulsante annulla"
+  },
+  
+  "save": "Salva",
+  "@save": {
+    "description": "Testo del pulsante salva"
+  },
+  
+  "delete": "Elimina",
+  "@delete": {
+    "description": "Testo del pulsante elimina"
+  },
+  
+  "confirm": "Conferma",
+  "@confirm": {
+    "description": "Testo del pulsante conferma"
+  },
+  
+  "error": "Errore",
+  "@error": {
+    "description": "Titolo del messaggio di errore"
+  },
+  
+  "success": "Successo",
+  "@success": {
+    "description": "Titolo del messaggio di successo"
+  }
+}
