@@ -49,10 +49,7 @@ class BookingListPage extends ConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          // TODO: Navigate to new booking page
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(l10n.newBooking)),
-          );
+          context.go(AppRoutes.newBooking);
         },
         icon: const Icon(Icons.add),
         label: Text(l10n.newBooking),

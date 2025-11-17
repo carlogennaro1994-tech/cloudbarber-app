@@ -5,6 +5,7 @@ import 'package:cloudbarber/features/auth/presentation/pages/login_page.dart';
 import 'package:cloudbarber/features/auth/presentation/pages/register_page.dart';
 import 'package:cloudbarber/features/booking/presentation/pages/booking_list_page.dart';
 import 'package:cloudbarber/features/booking/presentation/pages/booking_detail_page.dart';
+import 'package:cloudbarber/features/booking/presentation/pages/new_booking_page.dart';
 import 'package:cloudbarber/features/profile/presentation/pages/profile_page.dart';
 
 // Routes
@@ -13,6 +14,7 @@ class AppRoutes {
   static const String register = '/register';
   static const String bookingList = '/bookings';
   static const String bookingDetail = '/bookings/:id';
+  static const String newBooking = '/bookings/new';
   static const String profile = '/profile';
 }
 
@@ -39,6 +41,11 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         path: AppRoutes.bookingList,
         name: 'bookingList',
         builder: (context, state) => const BookingListPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.newBooking,
+        name: 'newBooking',
+        builder: (context, state) => const NewBookingPage(),
       ),
       GoRoute(
         path: AppRoutes.bookingDetail,
