@@ -62,10 +62,9 @@ flutter:
   generate: true
   
   assets:
-    - assets/images/
-    - assets/icons/
-    - assets/fonts/
-  
+    - assets/logo_black.jpeg
+    - assets/logo_white.jpeg
+
   # fonts:
   #   - family: CustomFont
   #     fonts:
