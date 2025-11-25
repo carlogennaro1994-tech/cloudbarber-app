@@ -252,16 +252,9 @@ class _BookingApiClient implements BookingApiClient {
           baseUrl,
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<Map<String, dynamic>> _value;
-    try {
-      _value = _result.data!
-          .map((dynamic i) =>
-              Map<String, dynamic>.fromJson(i as Map<String, dynamic>))
-          .toList();
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
+    final _value = _result.data!
+        .map((dynamic i) => i as Map<String, dynamic>)
+        .toList();
     return _value;
   }
 
