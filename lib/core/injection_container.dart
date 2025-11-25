@@ -1,12 +1,16 @@
 import 'package:get_it/get_it.dart';
-import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:dio/dio.dart';
+import 'package:cloudbarber/features/auth/data/datasources/auth_api_client.dart';
+import 'package:cloudbarber/features/auth/data/repositories/auth_repository_impl.dart';
+import 'package:cloudbarber/features/auth/domain/repositories/auth_repository.dart';
+import 'package:cloudbarber/features/booking/data/datasources/booking_api_client.dart';
+import 'package:cloudbarber/features/booking/data/repositories/booking_repository_impl.dart';
+import 'package:cloudbarber/features/booking/domain/repositories/booking_repository.dart';
 
 final getIt = GetIt.instance;
 
-@InjectableInit()
 Future<void> configureDependencies() async {
   // Register SharedPreferences
   final sharedPreferences = await SharedPreferences.getInstance();
@@ -42,26 +46,39 @@ Future<void> configureDependencies() async {
     ),
   );
   
+  // Add auth interceptor to add token to requests
+  dio.interceptors.add(
+    InterceptorsWrapper(
+      onRequest: (options, handler) async {
+        final token = await secureStorage.read(key: 'auth_token');
+        if (token != null) {
+          options.headers['Authorization'] = 'Bearer $token';
+        }
+        handler.next(options);
+      },
+    ),
+  );
+  
   getIt.registerSingleton<Dio>(dio);
   
-  // Initialize other dependencies
-  // This would be auto-generated with @injectable annotations
-  // getIt.init();
+  // Register API clients
+  getIt.registerLazySingleton<AuthApiClient>(
+    () => AuthApiClient(getIt<Dio>()),
+  );
+  getIt.registerLazySingleton<BookingApiClient>(
+    () => BookingApiClient(getIt<Dio>()),
+  );
+  
+  // Register repositories
+  getIt.registerLazySingleton<AuthRepository>(
+    () => AuthRepositoryImpl(
+      getIt<AuthApiClient>(),
+      getIt<FlutterSecureStorage>(),
+    ),
+  );
+  getIt.registerLazySingleton<BookingRepository>(
+    () => BookingRepositoryImpl(
+      getIt<BookingApiClient>(),
+    ),
+  );
 }
-
-// Example of how to use injectable annotations:
-// 
-// @injectable
-// class AuthRepository {
-//   final Dio dio;
-//   final FlutterSecureStorage secureStorage;
-//   
-//   AuthRepository(this.dio, this.secureStorage);
-// }
-// 
-// @injectable
-// class AuthService {
-//   final AuthRepository repository;
-//   
-//   AuthService(this.repository);
-// }

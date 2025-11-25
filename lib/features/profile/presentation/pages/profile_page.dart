@@ -54,6 +54,15 @@ class ProfilePage extends ConsumerWidget {
               child: Column(
                 children: [
                   ListTile(
+                    leading: const Icon(Icons.spa_outlined),
+                    title: const Text('Services'),
+                    trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                    onTap: () {
+                      context.go(AppRoutes.services);
+                    },
+                  ),
+                  const Divider(height: 1),
+                  ListTile(
                     leading: const Icon(Icons.calendar_today),
                     title: Text(l10n.bookings),
                     trailing: const Icon(Icons.arrow_forward_ios, size: 16),
