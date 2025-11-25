@@ -155,6 +155,18 @@ For sensitive data, use environment variables or a `.env` file (not included in 
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
+## 📚 Documentation
+
+| Document | Description |
+|----------|-------------|
+| [README.md](./README.md) | Project overview and quick start |
+| [ARCHITECTURE.md](./ARCHITECTURE.md) | Application architecture details |
+| [DATABASE_SCHEMA.md](./DATABASE_SCHEMA.md) | Database schema, entities, and relationships |
+| [SECURITY_RULES.md](./SECURITY_RULES.md) | Security rules, validation, and access control |
+| [DEVELOPMENT.md](./DEVELOPMENT.md) | Development setup and workflow |
+| [IMPLEMENTATION.md](./IMPLEMENTATION.md) | Implementation summary |
+| [CHECKLIST.md](./CHECKLIST.md) | Feature implementation tracking |
+
 ## 📄 License
 
 This project is proprietary software. All rights reserved.
