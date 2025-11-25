@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'service.dart';
+import 'package:cloudbarber/features/booking/domain/entities/service.dart';
 
 part 'booking.freezed.dart';
 part 'booking.g.dart';

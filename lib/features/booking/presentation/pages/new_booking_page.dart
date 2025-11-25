@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:cloudbarber/features/booking/presentation/providers/booking_provider.dart';
 import 'package:cloudbarber/features/booking/domain/entities/service.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:cloudbarber/l10n/app_localizations.dart';
 
 class NewBookingPage extends ConsumerStatefulWidget {
   const NewBookingPage({super.key});

@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cloudbarber/features/booking/presentation/providers/booking_provider.dart';
 import 'package:cloudbarber/features/booking/domain/entities/service.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ServicesPage extends ConsumerWidget {
   const ServicesPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final l10n = AppLocalizations.of(context)!;
     final servicesAsync = ref.watch(availableServicesProvider);
 
     return Scaffold(

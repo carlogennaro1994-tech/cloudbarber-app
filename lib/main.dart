@@ -4,7 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:cloudbarber/app/app_router.dart';
 import 'package:cloudbarber/app/app_theme.dart';
 import 'package:cloudbarber/core/injection_container.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:cloudbarber/l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

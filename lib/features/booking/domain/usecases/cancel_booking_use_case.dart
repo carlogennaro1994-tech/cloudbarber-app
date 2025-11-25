@@ -1,4 +1,3 @@
-import 'package:cloudbarber/features/booking/domain/entities/booking.dart';
 import 'package:cloudbarber/features/booking/domain/repositories/booking_repository.dart';
 
 /// Use case for cancelling a booking
