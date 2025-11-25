@@ -179,11 +179,18 @@ class UserValidation {
     return const ValidationResult.valid();
   }
 
-  /// Validates password with simpler rules (for login)
+  /// Validates password with simpler rules (for login only)
+  /// 
+  /// **IMPORTANT**: This method provides minimal validation suitable only for
+  /// login forms where we don't want to enforce strict rules on existing
+  /// passwords. For registration, ALWAYS use [validatePassword] instead.
   /// 
   /// Rules:
   /// - Required (not empty)
   /// - Min 6 characters (legacy compatibility)
+  /// 
+  /// @deprecated Prefer [validatePassword] for new password creation.
+  /// This method exists only for backward compatibility with existing accounts.
   static ValidationResult validatePasswordSimple(String? value) {
     if (value == null || value.isEmpty) {
       return const ValidationResult.invalid('Password is required');
@@ -438,9 +445,11 @@ class ServiceValidation {
       return const ValidationResult.invalid('Price cannot be negative');
     }
     
-    // Check for max 2 decimal places
-    final formatted = value.toStringAsFixed(2);
-    if (double.parse(formatted) != value) {
+    // Check for max 2 decimal places using integer arithmetic
+    // to avoid floating-point precision issues
+    final cents = (value * 100).round();
+    final reconstructed = cents / 100;
+    if ((value - reconstructed).abs() > 0.001) {
       return const ValidationResult.invalid(
         'Price must have at most 2 decimal places',
       );

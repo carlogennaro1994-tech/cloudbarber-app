@@ -17,15 +17,16 @@ This document provides comprehensive security rules, validation guidelines, and 
 | Uppercase Required      | At least 1 uppercase letter               |
 | Lowercase Required      | At least 1 lowercase letter               |
 | Number Required         | At least 1 digit                          |
-| Special Char Required   | At least 1 special character (!@#$%^&*)   |
+| Special Char Required   | At least 1 special character (!@#$%^&*(),.?":{}|<>)   |
 | Common Password Check   | Must not be in common passwords list      |
 
 #### Validation Regex
 
 ```dart
 // Strong password validation
+// Matches implementation in lib/core/validation.dart
 final passwordRegex = RegExp(
-  r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,128}$'
+  r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?\":{}|<>])[A-Za-z\d!@#$%^&*(),.?\":{}|<>]{8,128}$'
 );
 
 bool isValidPassword(String password) {
