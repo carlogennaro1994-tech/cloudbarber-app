@@ -50,7 +50,7 @@ class _BookingApiClient implements BookingApiClient {
           .map((dynamic i) => BookingModel.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, _result);
+      errorLogger?.logError(e, s, _options);
       rethrow;
     }
     return _value;
@@ -83,7 +83,7 @@ class _BookingApiClient implements BookingApiClient {
     try {
       _value = BookingModel.fromJson(_result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, null);
+      errorLogger?.logError(e, s, _options);
       rethrow;
     }
     return _value;
@@ -117,7 +117,7 @@ class _BookingApiClient implements BookingApiClient {
     try {
       _value = BookingModel.fromJson(_result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, null);
+      errorLogger?.logError(e, s, _options);
       rethrow;
     }
     return _value;
@@ -154,7 +154,7 @@ class _BookingApiClient implements BookingApiClient {
     try {
       _value = BookingModel.fromJson(_result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, _result);
+      errorLogger?.logError(e, s, _options);
       rethrow;
     }
     return _value;
@@ -214,7 +214,7 @@ class _BookingApiClient implements BookingApiClient {
           .map((dynamic i) => ServiceModel.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, _result);
+      errorLogger?.logError(e, s, _options);
       rethrow;
     }
     return _value;
@@ -256,10 +256,10 @@ class _BookingApiClient implements BookingApiClient {
     try {
       _value = _result.data!
           .map((dynamic i) =>
-              Map<String, dynamic>.from(i as Map<String, dynamic>))
+              Map<String, dynamic>.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, _result);
+      errorLogger?.logError(e, s, _options);
       rethrow;
     }
     return _value;
@@ -303,7 +303,7 @@ class _BookingApiClient implements BookingApiClient {
           .map((dynamic i) => BookingModel.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, _result);
+      errorLogger?.logError(e, s, _options);
       rethrow;
     }
     return _value;
