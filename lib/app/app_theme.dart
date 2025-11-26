@@ -116,7 +116,6 @@ class AppTheme {
         tertiary: accentColor,
         error: errorColor,
         surface: lightSurface,
-        background: lightBackground,
       ),
       
       textTheme: _buildTextTheme(Colors.black87),
@@ -194,6 +193,7 @@ class AppTheme {
         tertiary: accentColor,
         error: errorColor,
         surface: darkSurface,
+        // ignore: deprecated_member_use
         background: darkBackground,
       ),
       

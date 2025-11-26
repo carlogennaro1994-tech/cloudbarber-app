@@ -37,7 +37,7 @@ void main() {
             price: 40.0,
             currency: 'EUR',
           ),
-        ]);
+        ],);
 
     final result = await useCase();
 

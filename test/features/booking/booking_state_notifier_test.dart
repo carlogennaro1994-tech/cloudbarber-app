@@ -55,7 +55,7 @@ void main() {
           startTime: any(named: 'startTime'),
           notes: any(named: 'notes'),
           operatorId: any(named: 'operatorId'),
-        )).thenAnswer((_) async => booking);
+        ),).thenAnswer((_) async => booking);
 
     await notifier.createBooking(
       customerId: 'c1',

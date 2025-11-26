@@ -31,11 +31,11 @@ class BookingListPage extends ConsumerWidget {
             margin: const EdgeInsets.only(bottom: 12),
             child: ListTile(
               leading: CircleAvatar(
+                backgroundColor: Theme.of(context).colorScheme.primary,
                 child: Icon(
                   Icons.calendar_today,
                   color: Theme.of(context).colorScheme.onPrimary,
                 ),
-                backgroundColor: Theme.of(context).colorScheme.primary,
               ),
               title: Text('Booking #${index + 1}'),
               subtitle: Text('Date: ${DateTime.now().add(Duration(days: index)).toString().substring(0, 10)}'),
