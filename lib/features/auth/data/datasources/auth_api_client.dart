@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:cloudbarber/features/auth/data/models/user_model.dart';
+import 'package:cloudbarber/features/auth/data/models/auth_response_model.dart';
+import 'package:cloudbarber/features/auth/data/models/token_response_model.dart';
 
 part 'auth_api_client.g.dart';
 
@@ -9,10 +11,10 @@ abstract class AuthApiClient {
   factory AuthApiClient(Dio dio, {String baseUrl}) = _AuthApiClient;
 
   @POST('/auth/login')
-  Future<Map<String, dynamic>> login(@Body() Map<String, dynamic> body);
+  Future<AuthResponseModel> login(@Body() Map<String, dynamic> body);
 
   @POST('/auth/register')
-  Future<Map<String, dynamic>> register(@Body() Map<String, dynamic> body);
+  Future<AuthResponseModel> register(@Body() Map<String, dynamic> body);
 
   @POST('/auth/logout')
   Future<void> logout();
@@ -21,7 +23,7 @@ abstract class AuthApiClient {
   Future<UserModel> getCurrentUser();
 
   @POST('/auth/refresh')
-  Future<Map<String, dynamic>> refreshToken(@Body() Map<String, dynamic> body);
+  Future<TokenResponseModel> refreshToken(@Body() Map<String, dynamic> body);
 
   @POST('/auth/password/reset/request')
   Future<void> requestPasswordReset(@Body() Map<String, dynamic> body);
