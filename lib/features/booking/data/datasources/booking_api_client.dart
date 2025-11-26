@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:cloudbarber/features/booking/data/models/booking_model.dart';
 import 'package:cloudbarber/features/booking/data/models/service_model.dart';
+import 'package:cloudbarber/features/booking/data/models/time_slot_model.dart';
 
 part 'booking_api_client.g.dart';
 
@@ -11,8 +12,8 @@ abstract class BookingApiClient {
 
   @GET('/bookings')
   Future<List<BookingModel>> getCustomerBookings(
-    @Query('customer_id') String customerId,
-  );
+      @Query('customer_id') String customerId,
+      );
 
   @GET('/bookings/{id}')
   Future<BookingModel> getBookingById(@Path('id') String bookingId);
@@ -22,9 +23,9 @@ abstract class BookingApiClient {
 
   @PUT('/bookings/{id}')
   Future<BookingModel> updateBooking(
-    @Path('id') String bookingId,
-    @Body() Map<String, dynamic> body,
-  );
+      @Path('id') String bookingId,
+      @Body() Map<String, dynamic> body,
+      );
 
   @DELETE('/bookings/{id}')
   Future<void> cancelBooking(@Path('id') String bookingId);
@@ -32,17 +33,19 @@ abstract class BookingApiClient {
   @GET('/services')
   Future<List<ServiceModel>> getAvailableServices();
 
+  /// ✅ FIX: Prima era Future<List<Map<String, dynamic>>>
+  /// Retrofit NON può generare json per Map — ora usa un model corretto.
   @GET('/bookings/slots')
-  Future<List<Map<String, dynamic>>> getAvailableSlots(
-    @Query('date') String date,
-    @Query('service_ids') String serviceIds,
-    @Query('operator_id') String? operatorId,
-  );
+  Future<List<TimeSlotModel>> getAvailableSlots(
+      @Query('date') String date,
+      @Query('service_ids') String serviceIds,
+      @Query('operator_id') String? operatorId,
+      );
 
   @GET('/bookings/date-range')
   Future<List<BookingModel>> getBookingsByDateRange(
-    @Query('start_date') String startDate,
-    @Query('end_date') String endDate,
-    @Query('operator_id') String? operatorId,
-  );
+      @Query('start_date') String startDate,
+      @Query('end_date') String endDate,
+      @Query('operator_id') String? operatorId,
+      );
 }

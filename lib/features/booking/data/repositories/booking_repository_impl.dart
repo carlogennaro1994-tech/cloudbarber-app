@@ -97,7 +97,7 @@ class BookingRepositoryImpl implements BookingRepository {
       final models = await apiClient.getAvailableServices();
       return models.map((model) => model.toEntity()).toList();
     } catch (e) {
-      throw Exception('Failed to get available services: $e');
+      throw Exception('Failed to get services: $e');
     }
   }
 
@@ -111,19 +111,20 @@ class BookingRepositoryImpl implements BookingRepository {
       final dateStr = date.toIso8601String().split('T')[0];
       final serviceIdsStr = serviceIds.join(',');
 
-      final slots = await apiClient.getAvailableSlots(
+      // ORA ritorna List<TimeSlotModel>
+      final slotModels = await apiClient.getAvailableSlots(
         dateStr,
         serviceIdsStr,
         operatorId,
       );
 
-      return slots.map((slot) {
+      return slotModels.map((slot) {
         return TimeSlot(
-          startTime: DateTime.parse(slot['start_time']),
-          endTime: DateTime.parse(slot['end_time']),
-          isAvailable: slot['is_available'] ?? true,
-          operatorId: slot['operator_id'],
-          operatorName: slot['operator_name'],
+          startTime: DateTime.parse(slot.start),
+          endTime: DateTime.parse(slot.end),
+          isAvailable: slot.available,
+          operatorId: null,
+          operatorName: null,
         );
       }).toList();
     } catch (e) {
@@ -138,18 +139,18 @@ class BookingRepositoryImpl implements BookingRepository {
     String? operatorId,
   }) async {
     try {
-      final startDateStr = startDate.toIso8601String().split('T')[0];
-      final endDateStr = endDate.toIso8601String().split('T')[0];
+      final startStr = startDate.toIso8601String().split('T')[0];
+      final endStr = endDate.toIso8601String().split('T')[0];
 
       final models = await apiClient.getBookingsByDateRange(
-        startDateStr,
-        endDateStr,
+        startStr,
+        endStr,
         operatorId,
       );
 
       return models.map((model) => model.toEntity()).toList();
     } catch (e) {
-      throw Exception('Failed to get bookings by date range: $e');
+      throw Exception('Failed to get bookings by range: $e');
     }
   }
 }
